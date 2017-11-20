@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$lang['seo_title']}</title>
+<meta name="Keywords" content="{$lang['seo_key']}" />
+<meta name="Description" content="{$lang['seo_des']}" />
+<link href="{$css_path}css.css" type=text/css rel=stylesheet>
+</head>
+
+<body>
+{include file="xdcms/header.html"}
+    <!-- banner -->
+    <div id="banner">
+    <object id="bcastr4" data="uploadfile/flash.swf?xml=uploadfile/flash1.xml" type="application/x-shockwave-flash" width="944" height="369">
+        <param name="movie" value="uploadfile/flash.swf?xml=uploadfile/flash1.xml" />
+        <param name="wmode" value="transparent" />
+    </object>
+    </div>
+    <!-- banner END -->
+    <div id="body1">
+        <!-- 公司简介 -->
+        <div class="box1">
+			<div class="tit1"><h1>企业简介<font>About Company</font></h1></div>
+            {loop catid=8 more=1 rows=1}
+            <div class="box1_L">
+               	<div class="box1_t"><img src="{thumb($r.thumb,211,144)}" width="211" height="144" /></div>
+			</div>
+            <div class="box1_R"><div class="box1_z">{$r.content|strip_tags|truncate_cn:170}&nbsp; &nbsp;<a href="{caturl(8)}" style="color:#F00">详细>>></a></div></div>
+            {/loop}
+            <div class="Cle">&nbsp;</div>
+        </div>
+		<!-- 公司简介 END -->
+		
+		<!-- 公司新闻 -->
+        <div class="box2">        
+                <div class="tit2"><h1>企业动态<font>Company News</font></h1></div>
+                {loop catid=10 rows=5}
+                <li>
+                	<div class="box2_L">
+                    	<div class="box2_LL"><a href="{$r.url}" title="{$r.title}">{$r.title|truncate_cn:15}</a></div>
+                    </div>
+                    <div class="box2_R"><div>{$r.inputtime|date_format:'%Y/%m/%d'}</div></div>
+                </li> 
+                {/loop}         
+               <div class="Cle">&nbsp;</div>
+        </div>
+		<!-- 公司新闻 END -->
+        <div class="Cle">&nbsp;</div>
+	</div>
+    <div id="">&nbsp;</div>
+    <div id="body1">
+    <!-- 产品 -->
+    <div class="box3">
+    	<div class="tit3"><h1>产品展示<font>Show Products</font></h1></div>
+        	<div class="box3_L2">
+            <!--swf02-->
+            <DIV id=demo style="OVERFLOW: hidden; WIDTH: 530px; HEIGHT: 174px">
+            <TABLE cellPadding=0 align=left border=0 cellspace="0">
+            <TBODY>
+            	<TR>
+                	<TD id=demo1 vAlign=top>
+                    <TABLE cellSpacing=0 cellPadding=4 width=1566 border=0 id="tupian">
+                    <TBODY>
+                    <TR>
+                        {loop catid=3 rows=10}
+                        <TD align=middle><a href="{$r.url}" title="{$r.title}"/><img alt="{$r.title}" src="{thumb($r.thumb,191,126)}"></A></TD>
+                        <td width="10">&nbsp;</td>
+                        {/loop}
+                    </TR>
+                    </TBODY>
+                    </TABLE>
+                    </TD>
+            		<TD id=demo2 vAlign=top></TD>
+            	</TR>
+            </TBODY>
+            </TABLE>
+            </DIV>
+            <script type="text/javascript" src="{$js_path}product.js"></script>
+            <!--//swf02-->
+			</div>
+            <div class="Cle">&nbsp;</div>
+		</div>
+	<!-- 产品 END -->
+	
+	<!-- 行业新闻 -->
+        <div class="box2">
+               <div class="tit4"><h1>行业新闻<font>Industry News</font></h1></div>
+                {loop catid=11 rows=5}
+                <li>
+                	<div class="box2_L">
+                    	<div class="box2_LL"><a href="{$r.url}" title="{$r.title}">{$r.title|truncate_cn:15}</a></div>
+                    </div>
+                    <div class="box2_R"><div>{$r.inputtime|date_format:'%Y/%m/%d'}</div></div>
+                </li> 
+                {/loop}  
+               <div class="Cle">&nbsp;</div>
+        </div>
+		<!-- 行业新闻 END -->
+        <div class="Cle">&nbsp;</div>       
+  </div>
+{include file="xdcms/footer.html"}
+</div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+<script>location.href="../index.php?m=xdcms&c=login";</script>

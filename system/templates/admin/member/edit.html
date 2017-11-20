@@ -1,0 +1,33 @@
+{include file="admin/header.html"}
+<h1 class="xdcms_search_title">会员管理</h1>
+<div class="line"></div>
+<form name="addform" action="index.php?m=member&c=admin&f=editsave" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=member&c=admin">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=member&c=admin&f=field">会员模型</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <td align="right">用户名：</td>
+    <td colspan="3">{$rs.username}</td>
+  </tr>
+  <tr>
+    <td align="right">会员组：</td>
+    <td colspan="3">
+    <select name="groupid" id="groupid">
+      {$group}
+    </select></td>
+  </tr>
+  <tr>
+    <td align="right">密码：</td>
+    <td colspan="3"><input name="password" type="password" id="password" size="20"> * 不修改请留空</td>
+  </tr>
+  {$fields}
+  <tr>
+    <td>&nbsp;</td>
+    <td><input name="id" type="hidden" id="id" value="{$rs['userid']}" /><input type="submit" name="submit" value="确认保存" class="submit" /></td>
+  </tr>
+</table>
+</form>
+<div class="xdcms_bottom"></div>
+</body>
+</html>

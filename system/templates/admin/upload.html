@@ -1,0 +1,94 @@
+{include file="admin/header.html"}
+{nocache}
+<h1 class="xdcms_search_title">文件上传配置</h1>
+<div class="line"></div>
+<form name="addform" action="index.php?m=xdcms&c=setting&f=save" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=setting">基本设置</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=xdcms&c=setting&f=cache">更新缓存</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <td align="right">开启上传文件：</td>
+    <td colspan="3"><input name="isopen" type=radio class="checkbox" value="1" {if $upload['isopen']==1}checked="checked"{/if}> 是 <input name="isopen" type=radio class="checkbox" value="0" {if $upload['isopen']==0}checked="checked"{/if}> 
+    否</td>
+  </tr>
+  <tr>
+    <td align="right">图片上传大小限制：</td>
+    <td colspan="3"><input type="text" name="imagesize" class="txt" size="10" value="{$upload['imagesize']}"> KB</td>
+  </tr>
+  <tr>
+    <td align="right">图片上传格式限制：</td>
+    <td colspan="3"><input type="text" name="imageallowed" class="txt" size="30" value="{$upload['imageallowed']}"> <span>注：请以英文逗号","间隔</span></td>
+  </tr>
+  <tr>
+    <td align="right">文件上传大小限制：</td>
+    <td colspan="3"><input type="text" name="filesize" class="txt" size="10" value="{$upload['filesize']}"> KB</td>
+  </tr>
+  <tr>
+    <td align="right">文件上传格式限制：</td>
+    <td colspan="3"><input type="text" name="fileallowed" class="txt" size="30" value="{$upload['fileallowed']}"> <span>注：请以英文逗号","间隔</span></td>
+  </tr>
+<!--  <tr>
+    <td align="right">文件保存目录:</td>
+    <td colspan="3"><input type="text" name="folder" class="txt" size="30" value="{$upload['folder']}"></td>
+  </tr>-->  
+  <tr>
+    <th colspan="4" style="padding-left:5px;">水印设置</th>
+  </tr>
+  <tr>
+    <td align="right">水印类型：</td>
+    <td colspan="3"><input name="watermark" type=radio class="checkbox" value="1" {if $upload['watermark']==1}checked="checked"{/if}> 图片水印 <input name="watermark" type=radio class="checkbox" value="2" {if $upload['watermark']==2}checked="checked"{/if}> 文字水印 <input name="watermark" type=radio class="checkbox" value="100" {if $upload['watermark']==100}checked="checked"{/if}> 关闭水印</td>
+  </tr>
+  <tr>
+    <td align="right">水印位置:</td>
+    <td colspan="3">
+      <select name="pos" id="pos">
+        <option value="0" {if $upload['pos']==0}selected="selected"{/if}>随机</option>
+        <option value="1" {if $upload['pos']==1}selected="selected"{/if}>顶端居左</option>
+        <option value="2" {if $upload['pos']==2}selected="selected"{/if}>顶端居中</option>
+        <option value="3" {if $upload['pos']==3}selected="selected"{/if}>顶端居右</option>
+        <option value="4" {if $upload['pos']==4}selected="selected"{/if}>中部居左</option>
+        <option value="5" {if $upload['pos']==5}selected="selected"{/if}>中部居中</option>
+        <option value="6" {if $upload['pos']==6}selected="selected"{/if}>中部居右</option>
+        <option value="7" {if $upload['pos']==7}selected="selected"{/if}>底端居左</option>
+        <option value="8" {if $upload['pos']==8}selected="selected"{/if}>底端居中</option>
+        <option value="9" {if $upload['pos']==9}selected="selected"{/if}>底端居右</option>
+      </select></td>
+  </tr>
+  <tr>
+    <td align="right">水印字体大小:</td>
+    <td colspan="3">
+      <select name="font" id="font">
+        <option value="1" {if $upload['font']==1}selected="selected"{/if}>一号</option>
+        <option value="2" {if $upload['font']==2}selected="selected"{/if}>二号</option>
+        <option value="3" {if $upload['font']==3}selected="selected"{/if}>三号</option>
+        <option value="4" {if $upload['font']==4}selected="selected"{/if}>四号</option>
+        <option value="5" {if $upload['font']==5}selected="selected"{/if}>五号</option>
+      </select></td>
+  </tr>
+  <tr>
+    <td align="right">水印图片最小宽度:</td>
+    <td colspan="3"><input type="text" name="width" class="txt" size="10" value="{$upload['width']}"> PX <span>注：小于此宽度则不添加水印</span></td>
+  </tr>
+  <tr>
+    <td align="right">水印字体颜色:</td>
+    <td colspan="3"><input type="text" name="color" class="txt" size="10" value="{$upload['color']}"></td>
+  </tr>
+  <tr>
+    <td align="right">水印文字:</td>
+    <td colspan="3"><input type="text" name="text" class="txt" size="20" value="{$upload['text']}"></td>
+  </tr>
+  <tr>
+    <td align="right">水印图片:</td>
+    <td colspan="3"><input type="text" name="image" class="txt" size="30" value="{$upload['image']}"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="submit" value="确认保存" class="submit" /><input name="tag" type="hidden" id="tag" value="upload" /></td>
+  </tr>
+</table>
+</form>
+{/nocache}
+<div class="xdcms_bottom"></div>
+</body>
+</html>

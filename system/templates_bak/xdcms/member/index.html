@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员中心</title>
+<base href="{$config['siteurl']}">
+<link href="{$css_path}css.css" type=text/css rel=stylesheet>
+</head>
+
+<body>
+{include file="xdcms/header.html"}
+  <div id="banner1">{get_block tag='banner'}</div>
+  <div id="body3">
+{include file="xdcms/member/left.html"}
+    <div id="body3_r">
+      <div class="body3_r1">
+        <p><a href="/">首页</a>&nbsp;&raquo;&nbsp;会员中心</p>会员中心</div>
+        <div class="body3_r2">
+        <!-- 文本 -->
+您好,{$member['username']},欢迎您回来<br>您已经是第{$member['logins']}次登录我们网站了，您的详细信息如下：<br>注册时间：{$member['creat_time']|date_format:'%Y-%m-%d'}<br>最后登录时间：{$member['last_time']|date_format:'%Y-%m-%d'}<br>最后登录IP：{$member['last_ip']}
+        <!-- 文本 END  -->
+        </div>
+    </div>
+    <div class="Cle"></div>
+  </div>
+{include file="xdcms/footer.html"}
+</div>
+</body>
+</html>

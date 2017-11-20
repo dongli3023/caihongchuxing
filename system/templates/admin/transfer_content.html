@@ -1,0 +1,26 @@
+{include file="admin/header.html"}
+<h1 class="xdcms_search_title">数据转移</h1>
+<div class="line"></div>
+<form name="addform" action="index.php?m=xdcms&c=transfer&f=transfer_content_save" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=transfer&catid={$catid}">数据转移</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <td width="17%" align="right">转移内容：</td>
+    <td width="83%" colspan="3">
+      <textarea name="id" id="id" cols="45" rows="15" style="width:160px;float:left;">{$id}</textarea>
+      &nbsp;转移至
+      <select name="tocate" size="15" id="tocate" style="width:160px;">
+      {$categorylist}
+      </select>    </td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td><input type="hidden" name="catid" value="{$catid}" /><input type="submit" name="submit" value="确认转移" class="submit" /></td>
+  </tr>
+</table>
+</form>
+<div class="xdcms_bottom"></div>
+</body>
+</html>

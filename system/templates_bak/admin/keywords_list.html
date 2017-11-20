@@ -1,0 +1,30 @@
+{include file="admin/header.html"}
+{nocache}
+<h1 class="xdcms_search_title">关键词管理</h1>
+<div class="line"></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=keywords">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=xdcms&c=keywords&f=cache">更新缓存</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <th width="8%" class="tc">编号</th>
+    <th width="35%">名称</th>
+    <th>链接地址</th>
+    <th width="10%">操作</th>
+  </tr>
+{loop module="keywords" pages="page"}
+<tr {if $r._index%2==0}class="bf"{/if}> 
+    <td class="tc">{$r.id}</td>
+    <td>{$r.title}</td>
+    <td>{$r.url}</td>
+    <td><a href="index.php?m=xdcms&c=keywords&f=edit&id={$r.id}">编辑</a> | <a href="###" onclick="confirm('真的要删除此关键词吗?','index.php?m=xdcms&c=keywords&f=delete&id={$r.id}')">删除</a></td>
+</tr>
+{/loop}
+ <tr class="bf">
+    <td colspan="6" class="tc">{$pages}</td>
+ </tr>
+</table>
+{/nocache}
+<div class="xdcms_bottom"></div>
+</body>
+</html>

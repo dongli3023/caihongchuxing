@@ -1,0 +1,24 @@
+{include file="admin/header.html"}
+<h1 class="xdcms_search_title">内容管理</h1>
+<div class="line"></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="6" class="title"><div class="title_nav_1"><a href="index.php?m=form&c=content&formid={$form['id']}">管理首页</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <td align="right">标题：</td>
+    <td colspan="3">{$rs['title']}</td>
+  </tr>
+  {$fields}
+  <tr>
+    <td align="right">发布时间：</td>
+    <td colspan="3">{$rs['inputtime']|date_format:'%Y-%m-%d %H:%M:%S'}</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="button" name="submit" value="返回" class="button" onclick="location.href='index.php?m=form&c=content&formid={$formid}'" /></td>
+  </tr>
+</table>
+<div class="xdcms_bottom"></div>
+</body>
+</html>

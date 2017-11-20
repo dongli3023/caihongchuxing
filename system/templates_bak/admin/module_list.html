@@ -1,0 +1,31 @@
+{include file="admin/header.html"}
+{nocache}
+<h1 class="xdcms_search_title">模块管理</h1>
+<div class="line"></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=module">管理首页</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <th width="5%" class="tc">编号</th>
+    <th width="20%">模块名称</th>
+    <th width="8%">模块目录</th>
+    <th width="8%">开发者</th>
+    <th width="8%">发布日期</th>
+    <th width="6%">操作</th>
+  </tr>
+{foreach from=$config item=v}
+<tr class="bf"> 
+    <td class="tc">{$v.id}</td>
+    <td>{$v.name}</td>
+    <td>{$v.folder}</td>
+    <td><a href="{$v.url}" title="{$v.url}" target="_blank">{$v.author}</a></td>
+    <td>{$v.time}</td>
+    <td>{$v.install}</td>
+</tr>
+{/foreach}
+</table>
+{/nocache}
+<div class="xdcms_bottom"></div>
+</body>
+</html>

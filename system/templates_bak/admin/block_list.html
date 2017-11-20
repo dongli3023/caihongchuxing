@@ -1,0 +1,32 @@
+{include file="admin/header.html"}
+{nocache}
+<h1 class="xdcms_search_title">碎片管理</h1>
+<div class="line"></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=block">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=xdcms&c=block&f=add">添加碎片</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <th width="5%" class="tc">编号</th>
+    <th width="25%">名称</th>
+    <th width="26%">标签</th>
+    <th width="32%">数据调用</th>
+    <th width="12%">操作</th>
+  </tr>
+{loop module="block" pages="page"}
+<tr {if $r._index%2==0}class="bf"{/if}> 
+    <td class="tc">{$r.id}</td>
+    <td>{$r.title}</td>
+    <td>{$r.tag}</td>
+    <td><input name="textfield" type="text" id="textfield" value="{literal}{get_block tag={/literal}'{$r.tag}'{literal}}{/literal}" size="25" /></td>
+    <td><a href="index.php?m=xdcms&c=block&f=edit&id={$r.id}">编辑</a> | <a href="###" onclick="confirm('真的要删除此碎片吗?','index.php?m=xdcms&c=block&f=delete&id={$r.id}')">删除</a></td>
+</tr>
+{/loop}
+ <tr class="bf">
+    <td colspan="6" class="tc">{$pages}</td>
+ </tr>
+</table>
+{/nocache}
+<div class="xdcms_bottom"></div>
+</body>
+</html>

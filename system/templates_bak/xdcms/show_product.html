@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$rs.title}</title>
+<meta name="Keywords" content="{$rs.keywords}" />
+<meta name="Description" content="{$rs.description}" />
+<base href="{$config['siteurl']}">
+<link href="{$css_path}css.css" type=text/css rel=stylesheet>
+</head>
+
+<body>
+{include file="xdcms/header.html"}
+  <div id="banner1">{get_block tag='banner'}</div>
+  <div id="body3">
+	{include file="xdcms/left.html"}
+    <div id="body3_r">
+      <div class="body3_r1">
+        <p><a href="/">首页</a> > {get_guide($cat.catid)}</p>{$cat['catname']}</div>
+        <div class="product_show">
+        	<div class="body3_r3">{$rs.title}</div>
+            <div class="body3_r5">
+            	<div class="p_img_big">
+                <div id="tbody">
+                    <div id="mainbody">
+                    {foreach unserialize($rs.moreimage) as $k=>$v}
+                    {if $k==0}
+                      <img src="{thumb($v,640,400)}" width="640" height="400" id="mainphoto" rel="{$v}" />
+                    {/if}
+                    {/foreach}
+                    </div>
+                    <img src="{$image_path}goleft.gif" width="11" height="56" id="goleft" />
+                    <img src="{$image_path}goright.gif" width="11" height="56" id="goright" />
+                    <div id="photos">
+                      <div id="showArea">
+                        {foreach unserialize($rs.moreimage) as $k=>$v}
+                        <img src="{thumb($v,80,52)}" width="80" height="52" rel="{$v}" />
+                        {/foreach}
+                      </div>
+                    </div>
+                </div>
+                </div>
+                <div class="p_content">
+                <!-- 详细内容 -->
+                {$rs.content}
+                <!-- 详细内容 END-->
+                </div>
+		</div>
+        </div>
+    </div>
+    <div class="Cle"></div>
+  </div>
+{include file="xdcms/footer.html"}
+</div>
+</body>
+</html>
+<SCRIPT type="text/javascript" src="{$js_path}slide.js"></SCRIPT>

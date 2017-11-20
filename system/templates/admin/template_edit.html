@@ -1,0 +1,28 @@
+{include file="admin/header.html"}
+{nocache}
+<h1 class="xdcms_search_title">模板管理</h1>
+<div class="line"></div>
+<form name="addform" action="index.php?m=xdcms&c=template&f=edit_save" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=template">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=xdcms&c=template&f=calls">调用说明</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <td width="19%" align="right">模板地址：</td>
+    <td width="81%" colspan="3">{$filename}</td>
+  </tr>
+  
+  <tr>
+    <td align="right">源代码:</td>
+    <td colspan="3"><textarea name="content" id="content" cols="85" rows="35">{$content}</textarea></td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td><input type="submit" name="submit" value="确认保存" class="submit" /><input name="file" type="hidden" id="file" value="{$filename}" /></td>
+  </tr>
+</table>
+</form>
+{/nocache}
+<div class="xdcms_bottom"></div>
+</body>
+</html>

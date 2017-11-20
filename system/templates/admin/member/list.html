@@ -1,0 +1,32 @@
+{include file="admin/header.html"}
+{nocache}
+<h1 class="xdcms_search_title">会员管理</h1>
+<div class="line"></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=member&c=admin">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=member&c=admin&f=field">会员模型</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <th width="5%" class="tc">编号</th>
+    <th width="31%">用户名</th>
+    <th width="40%">注册时间</th>
+    <th width="12%">是否锁定</th>
+    <th width="12%">操作</th>
+  </tr>
+{loop module="member" order="userid desc" pages="page"}
+<tr {if $r._index%2==0}class="bf"{/if}> 
+    <td class="tc">{$r.userid}</td>
+    <td>{$r.username}</td>
+    <td>{$r.creat_time|date_format:'%Y-%m-%d'}</td>
+    <td>{if $r.is_lock==1}<a href="index.php?m=member&c=admin&f=lock&id={$r.userid}&lockid=0"><font color='#FF0000'>已锁定</font></a>{else}<a href="index.php?m=member&c=admin&f=lock&id={$r.userid}&lockid=1">正常</a>{/if}</td>
+    <td><a href="index.php?m=member&c=admin&f=edit&id={$r.userid}">编辑</a> | <a href="###" onclick="confirm('真的要删除此会员吗?','index.php?m=member&c=admin&f=delete&id={$r.userid}')">删除</a></td>
+</tr>
+{/loop}
+ <tr class="bf">
+    <td colspan="6" class="tc">{$pages}</td>
+ </tr>
+</table>
+{/nocache}
+<div class="xdcms_bottom"></div>
+</body>
+</html>

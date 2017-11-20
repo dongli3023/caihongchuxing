@@ -1,0 +1,177 @@
+{include file="admin/header.html"}
+<h1 class="xdcms_search_title">栏目管理</h1>
+<div class="line"></div>
+<form name="addform" action="index.php?m=xdcms&c=category&f=edit_save" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=category">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=xdcms&c=category&f=add">添加栏目</a></div><span>|</span><div class="title_nav_3"><a href="index.php?m=xdcms&c=category&f=cache">更新缓存</a></div></th>
+  </tr>
+  <tr>
+    <td align="right">上级栏目:</td>
+    <td width="86%" colspan="3"><label>
+      <select name="parentid" id="parentid">
+        <option value="{$rs['parentid']}">{if $catname==''}无(作为一级栏目){else}{$catname}{/if}</option>
+        {$categorylist}
+      </select>
+    </label></td>
+  </tr>
+  <tr>
+    <td align="right">栏目名称:</td>
+    <td colspan="3"><input type="text" name="catname" class="txt" size="30" id="catname" value="{$rs['catname']}"></td>
+  </tr>
+  <tr>
+    <td align="right">栏目目录:</td>
+    <td colspan="3"><input type="text" name="catdir" class="txt" size="15" id="catdir" value="{$rs['catdir']}"></td>
+  </tr>
+  <tr>
+    <td align="right">栏目图片:</td>
+    <td colspan="3"><input type="text" name="thumb" id="thumb" class="txt" size="30" value="{$rs['thumb']}"> <a href="#" onclick="javascript:ShowIframe(400,115,'上传缩略图！','system/function/upload.inc.php?filename=thumb')">上 传</a></td>
+  </tr>
+  <tr>
+    <td align="right">内容模型:</td>
+    <td colspan="3"><select name="model" id="model" onChange="get_model(this.value)">
+    <option value="">请选择模型</option>
+    {foreach from=$model item=value key=k}
+      <option value="{$value['model_table']}" {if $value.model_table==$rs.model}selected="selected"{/if}>{$value['model_name']}</option>
+    {/foreach}
+      </select></td>
+  </tr>
+  <tr>
+    <td align="right">语言:</td>
+    <td colspan="3"><select name="lang" id="lang">
+    {foreach from=$lang item=value}
+      <option value="{$value['id']}" {if $rs.lang==$value.id}selected="selected"{/if}>{$value['title']}</option>
+    {/foreach}
+      </select></td>
+  </tr>
+  <tr>
+    <th colspan="4" style="padding-left:5px;">更多选项[<a href="###" onclick="openShutManager(this,'box4',false,'关闭','展开')" >展开</a>]</th>
+  </tr>
+  </table>
+  
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" id="box4" style="display:none" class="xdcms_add_table xdcms_cate_add_table">
+  <tr>
+    <td width="23%" align="right">列表页每页数据条数:</td>
+    <td  colspan="3"><input type="text" name="pagesize" class="txt" size="6" id="pagesize" value="{$rs['pagesize']}"> 注：设置该栏目列表页每页所显示的数据条数</td>
+  </tr>
+  <tr>
+    <td align="right">是否外部链接:</td>
+    <td colspan="3">
+      <select name="is_link" id="is_link" onChange="islink(this.value)" class="fl">
+        <option value="0" {if $rs['is_link']==0}selected="selected"{/if}>否</option>
+        <option value="1" {if $rs['is_link']==1}selected="selected"{/if}>是</option>
+      </select> <div id="text_show" {if $rs['is_link']==1}style="display:block;"{else}style="display:none;"{/if}>链接地址：<input type="text" name="url" class="txt" size="20" id="url" value="{$rs['url']}"> * 如修改为外部链接，请填写完整路径，如：http://www.91736.com</div></td>
+  </tr>
+  
+  
+  <tr>
+    <td align="right">排序:</td>
+    <td colspan="3"><input type="text" name="sort" class="txt" size="6" id="sort" value="{$rs['sort']}"></td>
+  </tr>
+  <tr>
+    <td align="right">是否导航显示:</td>
+    <td colspan="3">
+      <input name="is_show" type="radio" id="is_show" value="1" {if $rs['is_show']==1}checked="checked"{/if} class="checkbox" />
+      是 
+      <input name="is_show" type="radio" id="is_show" value="0" {if $rs['is_show']==0}checked="checked"{/if} class="checkbox"/>
+      否</td>
+  </tr>
+  <tr>
+    <td align="right">是否新窗口打开:</td>
+    <td colspan="3">
+      <input name="is_target" type="radio" id="is_target" value="1" {if $rs['is_target']==1}checked="checked"{/if} class="checkbox"/>
+      是 
+      <input name="is_target" type="radio" id="is_target" value="0" {if $rs['is_target']==0}checked="checked"{/if} class="checkbox" />
+      否</td>
+  </tr>
+  <tr>
+    <td align="right">栏目静态设置:</td>
+    <td colspan="3">
+      <input name="is_html" type="radio" id="is_html" value="0" {if $rs['is_html']==0}checked="checked"{/if} class="checkbox" onClick="get_url(this.value)" />
+      动态
+      <input name="is_html" type="radio" id="is_html" value="1" {if $rs['is_html']==1}checked="checked"{/if} class="checkbox" onClick="get_url(this.value)" />
+      静态
+      <input name="is_html" type="radio" id="is_html" value="2" {if $rs['is_html']==2}checked="checked"{/if} class="checkbox" onClick="get_url(this.value)" />
+      伪静态</td>
+  </tr>
+    <td align="right">栏目页模板:</td>
+    <td colspan="3">
+      <select name="template_cate">
+      	  <option value="{$rs['template_cate']}">{$rs['template_cate']}</option>
+        {foreach from=$template_cate item=value}
+          <option value="{$value}">{$value}</option>
+        {/foreach}
+      </select> 注：选择与模型名称相对应的模板，如新闻(news)则选择list_news.html</td>
+  </tr>
+  <tr>
+    <td align="right">列表页模板:</td>
+    <td colspan="3">
+      <select name="template_list">
+      	  <option value="{$rs['template_list']}">{$rs['template_list']}</option>
+        {foreach from=$template_list item=value}
+          <option value="{$value}">{$value}</option>
+        {/foreach}
+      </select> 注：选择与模型名称相对应的模板，如新闻(news)则选择list_news.html</td>
+  </tr>
+  <tr>
+    <td align="right">内容页模板:</td>
+    <td colspan="3">
+      <select name="template_show">
+      	  <option value="{$rs['template_show']}">{$rs['template_show']}</option>
+        {foreach from=$template_show item=value}
+          <option value="{$value}">{$value}</option>
+        {/foreach}
+      </select> 注：选择如新闻(news)则选择show_news.html</td>
+  </tr>
+  <tr>
+    <td align="right">列表页url规则:</td>
+    <td colspan="3">
+      <select name="url_list">
+        {foreach from=$url_list item=value}
+          <option value="{$value.id}" {if $rs.url_list==$value.id}selected="selected"{/if}>{$value.urldemo}</option>
+        {/foreach}
+      </select></td>
+  </tr>
+  <tr>
+    <td align="right">内容页url规则:</td>
+    <td colspan="3">
+      <select name="url_show">
+        {foreach from=$url_show item=value}
+          <option value="{$value.id}" {if $rs.url_show==$value.id}selected="selected"{/if}>{$value.urldemo}</option>
+        {/foreach}
+      </select></td>
+  </tr>
+  <tr>
+    <td align="right">SEO标题:</td>
+    <td colspan="3"><input type="text" name="seo_title" class="txt" size="30" value="{$rs['seo_title']}"></td>
+  </tr>
+  <tr>
+    <td align="right">SEO关键字:</td>
+    <td colspan="3"><input type="text" name="seo_key" class="txt" size="45" value="{$rs['seo_key']}"></td>
+  </tr>
+  <tr>
+    <td align="right">SEO描述:</td>
+    <td colspan="3"><textarea name="seo_des" cols="45" rows="5">{$rs['seo_des']}</textarea></td>
+  </tr>  
+  <tr>
+    <th colspan="4" style="padding-left:5px;">权限设置 <b>[注：如不限制请留空]</b></th>
+  </tr>
+  <tr>
+    <td align="right">前台访问:</td>
+    <td colspan="3"><input name="power[member_0]" type="checkbox" value="1" {if get_power('member','0',{$rs['catid']})==1}checked="checked"{/if} />游客 {loop module="member_group"}<input name="power[member_{$r.groupid}]" type="checkbox" value="1" {if get_power('member',{$r.groupid},{$rs['catid']})==1}checked="checked"{/if} />{$r.name} {/loop}</td>
+  </tr>
+  <tr>
+    <td align="right">后台管理:</td>
+    <td colspan="3">{loop module="admin_group"}<input name="power[admin_{$r.groupid}]" type="checkbox" value="1" {if get_power('admin',{$r.groupid},{$rs['catid']})==1}checked="checked"{/if} />{$r.name} {/loop}</td>
+  </tr>
+  </table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="xdcms_add_table xdcms_cate_add_table" >
+  <tr>
+    <td align="right" width="14%">&nbsp;</td><input type="hidden" name="catid" id="catid" value="{$rs['catid']}" />
+    <td><input type="submit" name="submit" value="确认保存" class="submit" /></td>
+  </tr>
+</table>
+</form>
+<div class="xdcms_bottom"></div>
+</body>
+</html>

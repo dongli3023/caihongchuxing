@@ -1,0 +1,25 @@
+{include file="admin/header.html"}
+{nocache}
+<h1 class="xdcms_search_title">管理组管理</h1>
+<div class="line"></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=admin&f=admin_group">管理组</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=xdcms&c=admin&f=admin_group_add">添加组</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <th width="5%" class="tc">ID号</th>
+    <th>管理员组名称</th>
+    <th width="10%">操作</th>
+  </tr>
+{loop module="admin_group"}
+<tr {if $r._index%2==0}class="bf"{/if}> 
+    <td class="tc">{$r.groupid}</td>
+    <td>{$r.name}</td>
+    <td><a href="index.php?m=xdcms&c=admin&f=admin_group_edit&id={$r.groupid}">编辑</a> | <a href="###" onclick="confirm('真的要删除此管理组吗?','index.php?m=xdcms&c=admin&f=admin_group_delete&id={$r.groupid}')">删除</a></td>
+</tr>
+{/loop}
+</table>
+{/nocache}
+<div class="xdcms_bottom"></div>
+</body>
+</html>

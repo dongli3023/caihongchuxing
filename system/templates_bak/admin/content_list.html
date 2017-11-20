@@ -1,0 +1,49 @@
+{include file="admin/header.html"}
+{nocache}
+<h1 class="xdcms_search_title"><div id="open_search"></div>搜索</h1>
+<div class="line"></div>
+<div id="XDcms_search">
+<form name="form1" action="index.php?m=xdcms&c=content&f=search" method="post">
+	<dl>
+    	<dd>请输入关键词：</dd>
+        <dd><input name="key" type="text" class="key" /></dd>
+        <dd><input name="submit" type="submit" value="马上搜索" class="submit ml20" /><input name="catid" type="hidden" value="{$catid}" /></dd>
+    </dl>
+</form>
+</div>
+<form name="form"  id="form" action="" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1">{$catname}</div><span>|</span><div class="title_nav_2"><a href="index.php?m=xdcms&c=content&f=add&catid={$catid}">发布内容</a></div><span>|</span><div class="title_nav_3"><a href="index.php?m=xdcms&c=transfer&catid={$catid}">数据转移</a></div></th>
+  </tr>
+  <tr>
+    <th width="7%" class="tc"><input name="checkSelect" type="checkbox" class="checkbox" onClick="javascript: checkAll(this)" value="checkbox"></th>
+    <th width="5%">排序</th>
+    <th width="5%">编号</th>
+    <th>标题</th>
+    <th width="8%" class="tc">点击量</th>
+    <th width="10%">发布时间</th>
+    <th width="11%" class="tc">操作</th>
+  </tr>
+  {loop catid=$catid pages="page" urlrule="index.php?m=xdcms&c=content&catid=[catid]&page=[page]" rows="20"}
+  <tr {if $r._index%2==0}class="bf"{/if}>
+    <td class="tc"><input type="checkbox" name="contentid[]" value="{$r.id}" class="checkbox" /><input type="hidden" name="id[]" id="id[]" value="{$r.id}" /></td>
+    <td><input type="text" name="sort{$r.id}" id="sort{$r.id}" value="{$r.sort}" size="4" /></td>
+    <td>{$r.id}</td>
+    <td align="left" {if $r.style!=""}class="{$r.style}"{/if}> &nbsp;{$r.title}</td>
+    <td class="tc">{$r.hits}</td>
+    <td>{$r.inputtime|date_format:'%Y-%m-%d'}</td>
+    <td><a href="{$r.url}" target="_blank">查看</a> | <a href="index.php?m=xdcms&c=content&f=edit&catid={$r.catid}&id={$r.id}">编辑</a> | <a href="#" onclick="confirm('真的要删除此信息吗?','index.php?m=xdcms&c=content&f=delete&catid={$r.catid}&id={$r.id}')">删除</a></td>
+  </tr>
+  {/loop}
+  <tr>
+	<td colspan="7"><input type="hidden" name="catid" id="catid" value="{$catid}" /><input name="submit" type="submit" class="submit ml20" value="批量删除" onclick="form.action='index.php?m=xdcms&c=content&f=delete';" /><input name="submit" type="submit" class="button ml20" value="排序" onclick="form.action='index.php?m=xdcms&c=content&f=sort_save';" /><input name="submit2" type="submit" class="submit ml20" value="批量移动" onclick="form.action='index.php?m=xdcms&c=transfer&f=transfer_content';" /></td>
+  </tr>
+ <tr class="bf">
+    <td colspan="7" class="tc">{$pages}</td></tr>
+</table>
+</form>
+{/nocache}
+<div class="xdcms_bottom"></div>
+</body>
+</html>

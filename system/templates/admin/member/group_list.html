@@ -1,0 +1,28 @@
+{include file="admin/header.html"}
+{nocache}
+<h1 class="xdcms_search_title">会员组管理</h1>
+<div class="line"></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=member&c=group">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=member&c=group&f=add">添加组</a></div><span>|</span><div class="title_nav_3"><a href="index.php?m=member&c=group&f=cache">更新缓存</a></div></th>
+  </tr>
+  <tr>
+    <th width="5%" class="tc">编号</th>
+    <th>会员组名</th>
+    <th width="12%">操作</th>
+  </tr>
+{loop module="member_group" order="groupid desc" pages="page"}
+<tr {if $r._index%2==0}class="bf"{/if}> 
+    <td class="tc">{$r.groupid}</td>
+    <td>{$r.name}</td>
+    <td><a href="index.php?m=member&c=group&f=edit&id={$r.groupid}">编辑</a> | <a href="###" onclick="confirm('真的要删除此会员组吗?','index.php?m=member&c=group&f=delete&id={$r.groupid}')">删除</a></td>
+</tr>
+{/loop}
+ <tr class="bf">
+    <td colspan="6" class="tc">{$pages}</td>
+ </tr>
+</table>
+{/nocache}
+<div class="xdcms_bottom"></div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$form['form_name']}</title>
+<base href="{$config['siteurl']}">
+<link href="{$css_path}css.css" type=text/css rel=stylesheet>
+</head>
+
+<body>
+{include file="xdcms/header.html"}
+  <div id="banner1">{get_block tag='banner'}</div>
+  <div id="body3">
+    <!-- 二级导航 -->
+    <div id="body3_l">
+        <div class="body3_l1">{$form['form_name']}</div>
+        <div class="body3_l2">
+            <ul>
+                <li><div class="body3_l2_t">&nbsp;<a href="index.php?m=form&c=lists&formid={$form['id']}">{$form['form_name']}</a></div></li>
+            </ul> 
+        </div>
+    </div>
+    <!-- 二级导航 END  -->
+    <div id="body3_r">
+      <div class="body3_r1">
+        <p><a href="/">首页</a>&nbsp;&raquo;&nbsp;{$form['form_name']}</p>{$form['form_name']}</div>
+        <div class="body3_r2">
+        <table width="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#CCCCCC">
+          <form name="addform" action="index.php?m=form&c=lists&f=add_save&formid={$form['id']}" method="post">
+          <tr>
+            <td width="21%" align="right">标题：</td>
+            <td width="79%"><label>
+              <input name="fields[title]" type="text" id="fields[title]" size="35" />
+            </label></td>
+          </tr>
+          {$fields}
+          <tr>
+            <td>&nbsp;</td>
+            <td>
+            <input type="submit" name="submit" value=" 提 交 " /></td>
+          </tr>
+          </form>
+        </table>
+        </div>
+    </div>
+    <div class="Cle"></div>
+  </div>
+{include file="xdcms/footer.html"}
+</div>
+</body>
+</html>

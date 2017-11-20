@@ -1,0 +1,25 @@
+{include file="admin/header.html"}
+<h1 class="xdcms_search_title">友情链接管理</h1>
+<div class="line"></div>
+<form name="addform" action="index.php?m=link&c=admin&f=addsave" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=link&c=admin">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=link&c=admin&f=add">添加链接</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <td width="24%" align="right">名称：</td>
+    <td width="76%" colspan="3"><input type="text" name="title" class="txt" size="30"></td>
+  </tr>
+  <tr>
+    <td align="right">链接地址：</td>
+    <td colspan="3"><input type="text" name="url" class="txt" size="30"><span> * 请填写完整路径，如：http://www.91736.com</span></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="submit" value="确认保存" class="submit" /></td>
+  </tr>
+</table>
+</form>
+<div class="xdcms_bottom"></div>
+</body>
+</html>

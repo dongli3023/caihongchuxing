@@ -1,0 +1,29 @@
+{include file="admin/header.html"}
+{nocache}
+<h1 class="xdcms_search_title">模型管理</h1>
+<div class="line"></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=model">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=xdcms&c=model&f=cache">更新缓存</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <td width="8%" class="tc">编号</td>
+    <td>模型名称</td>
+    <td width="15%">数据表</td>
+    <td width="15%">状态</td>
+    <td width="25%">操作</td>
+  </tr>
+{loop module="model"}
+<tr {if $r._index%2==0}class="bf"{/if}> 
+    <td class="tc">{$r.id}</td>
+    <td>{$r.model_name}</td>
+    <td>{$pre}{$r.model_table}</td>
+    <td>{if $r.is_lock==0}<a href="index.php?m=xdcms&c=model&f=lock&id={$r.id}&lockid=1"><font color='#FF0000'>已锁定</font></a>{else}<a href="index.php?m=xdcms&c=model&f=lock&id={$r.id}&lockid=0">正常</a>{/if}</td>
+    <td><a href="index.php?m=xdcms&c=model&f=field&modelid={$r.id}">管理字段</a> | <a href="index.php?m=xdcms&c=model&f=model_edit&id={$r.id}">编辑</a> | {if $r.is_fixed==0}<a href="###" onclick="confirm('真的要删除此模型吗?','index.php?m=xdcms&c=model&f=model_delete&id={$r.id}')">删除</a>{else}<font color='#FF0000'>删除</font>{/if}</td>
+</tr>
+{/loop}
+</table>
+{/nocache}
+<div class="xdcms_bottom"></div>
+</body>
+</html>

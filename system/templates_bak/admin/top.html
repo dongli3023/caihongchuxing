@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>XDcms企业管理系统--后台管理</title>
+<link rel="stylesheet" type="text/css" href="admin/css/top.css">
+</head>
+
+<body>
+<div class="main header">
+	<div class="logo"></div>
+    <h5><a href="http://www.iszzz.com/thread-299-1-1.html" target="_blank">使用帮助</a><a href="http://www.iszzz.com/thread-1990-1-1.html" target="_blank">关于</a></h5>
+    <ul>
+    {foreach $top_menu as $k=>$v}
+        <li {if $k==0}class="on"{elseif $k=={$array_count-1}}class="end"{/if}><a onClick="parent.left.location='{$v.url}';" href="index.php?m=xdcms&c=index&f=main" target="main">{$v.title}</a></li>
+    {/foreach}
+    </ul>
+</div>
+<div class="manage"><span>语言选择：{foreach $language as $v}<a href="/index.php?m=xdcms&c=index&l={$v.id}" target="_parent">{if $v.title==$lang_title}<font color="#ff0000">{$v.title}</font>{else}{$v.title}{/if}</a>|{/foreach}</span>当前版本：{$lang_title} </div>
+<div class="position">
+	<a href="index.php?m=xdcms&c=setting" target="main">系统设置</a>
+    <a href="/" target="_blank">首页</a>
+    <a href="index.php?m=xdcms&c=login&f=out" target="_parent">退出</a>
+    <h5>{$config["sitename"]} > 后台内容管理</h5>
+</div>
+</body>
+</html>

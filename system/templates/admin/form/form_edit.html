@@ -1,0 +1,57 @@
+{include file="admin/header.html"}
+<h1 class="xdcms_search_title">自定义表单管理</h1>
+<div class="line"></div>
+<form name="addform" action="index.php?m=form&c=admin&f=form_edit_save" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=form&c=admin">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=form&c=admin&f=form_add">添加表单</a></div><span>|</span><div class="title_nav_3"><a href="index.php?m=form&c=admin&f=cache">更新缓存</a></div></th>
+  </tr>
+  <tr>
+    <td align="right">表单名称：</td>
+    <td colspan="3"><input type="text" name="formname" class="txt" size="30" id="formname" value="{$rs['form_name']}"></td>
+  </tr>
+  <tr>
+    <td align="right">表单数据表:</td>
+    <td colspan="3"><input type="text" name="formtable" class="txt" size="30" id="formtable" value="{$rs['form_table']}" disabled></td>
+  </tr>
+  <tr>
+    <td align="right">是否开启:</td>
+    <td colspan="3">
+      <input name="is_lock" type="radio" id="is_lock" value="1" {if $rs['is_lock']==1}checked="checked"{/if} />
+      是 
+      <input type="radio" name="is_lock" id="is_lock" value="0" {if $rs['is_lock']==0}checked="checked"{/if}/>
+      否</td>
+  </tr>
+  <tr>
+    <td align="right">是否固定:</td>
+    <td colspan="3">
+      <input name="is_fixed" type="radio" id="is_fixed" value="1" {if $rs['is_fixed']==1}checked="checked"{/if} {if $rs['is_fixed']==1}disabled{/if}/>
+      是 
+      <input name="is_fixed" type="radio" id="is_fixed" value="0" {if $rs['is_fixed']==0}checked="checked"{/if} {if $rs['is_fixed']==1}disabled{/if}/>
+      否</td>
+  </tr>
+  <tr>
+    <td align="right">是否自动发送Email:</td>
+    <td colspan="3">
+      <input name="is_email" type="radio" id="is_email" value="1" {if $rs['is_email']==1}checked="checked"{/if} />
+      是 
+      <input type="radio" name="is_email" id="is_email" value="0" {if $rs['is_email']==0}checked="checked"{/if}/>
+      否</td>
+  </tr>
+  <tr>
+    <td align="right">是否显示验证码:</td>
+    <td colspan="3">
+      <input name="is_code" type="radio" id="is_code" value="1" {if $rs['is_code']==1}checked="checked"{/if} />
+      是 
+      <input type="radio" name="is_code" id="is_code" value="0" {if $rs['is_code']==0}checked="checked"{/if}/>
+      否</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="submit" value="确认保存" class="submit" /><input name="id" type="hidden" id="id" value="{$rs['id']}" /></td>
+  </tr>
+</table>
+</form>
+<div class="xdcms_bottom"></div>
+</body>
+</html>

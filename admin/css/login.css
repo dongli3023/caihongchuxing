@@ -1,0 +1,11 @@
+body, div, ul, li, input, textarea, p, form, button{padding:0; margin:0;}
+ul,li{list-style:none;}
+body{font-size:12px;color:#595959;background-color:#dfdfdf;}
+
+.login{width:794px;height:689px;background:url(../images/login_bg.gif);margin:auto;}
+.login ul{padding-left:460px;padding-top:250px;}
+.login ul li{clear:both;padding-top:10px;}
+.txt{border:1px solid #ccc;height:26px;width:160px;background:url(../images/input_bg.gif);line-height:26px;padding-left:3px;}
+.w96{width:96px;float:left;}
+.submit{width:95px;height:28px;background:url(../images/style.png);border:0px;}
+.codeimage{float:left;margin-left:6px;margin-top:3px;}

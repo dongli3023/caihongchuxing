@@ -1,0 +1,33 @@
+{include file="admin/header.html"}
+{nocache}
+<h1 class="xdcms_search_title">菜单管理</h1>
+<div class="line"></div>
+<form name="form"  id="form" action="index.php?m=xdcms&c=menu&f=sort_save" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=menu">管理菜单</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=xdcms&c=menu&f=cache">更新缓存</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <th width="8%" class="tc">ID</th>
+    <th width="10%">排序</th>
+    <th>菜单名称</th>
+    <th width="34%" class="tc">操作</th>
+  </tr>
+{loop sql="select * from {$pre}menu where parentid=0"}
+<tr {if $r._index%2==0}class="bf"{/if}> 
+    <td class="tc">{$r.menuid}<input type="hidden" name="menuid[]" id="menuid[]" value="{$r.menuid}" /></td>
+    <td><input type="text" name="sort{$r.menuid}" class="txt" size="4" id="sort{$r.menuid}" value="{$r.sort}"></td>
+    <td>{$r.title}</td>
+    <td class="tc">{if $r.menuid==3}添加子菜单{else}<a href="index.php?m=xdcms&c=menu&f=add&p={$r.menuid}">添加子菜单</a>{/if} | <a href="index.php?m=xdcms&c=menu&f=lists&id={$r.menuid}">查看子菜单</a> | <a href="index.php?m=xdcms&c=menu&f=edit&id={$r.menuid}">编辑</a> | {if $r.menuid==3}删除{else}<a href="#" onclick="confirm('真的要删除此菜单吗?','index.php?m=xdcms&c=menu&f=delete&id={$r.menuid}')">删除</a>{/if}</td>
+</tr>
+{/loop}
+<tr class="bf">
+    <td>&nbsp;</td>
+    <td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;      <input type="submit" name="button" id="button" value="排序" class="button" /></td>
+</tr>
+</table>
+</form>
+{/nocache}
+<div class="xdcms_bottom"></div>
+</body>
+</html>

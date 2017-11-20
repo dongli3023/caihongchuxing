@@ -1,0 +1,82 @@
+{include file="admin/header.html"}
+<script charset="utf-8" src="admin/editor/kindeditor.js"></script>
+<script charset="utf-8" src="admin/editor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="admin/editor/plugins/code/prettify.js"></script>
+<h1 class="xdcms_search_title"><div id="open_search"></div>搜索</h1>
+<div class="line"></div>
+<div id="XDcms_search">
+{nocache}
+<form name="form1" action="index.php?m=xdcms&c=content&f=search" method="post">
+	<dl>
+    	<dd>请输入关键词：</dd>
+        <dd><input name="key" type="text" class="key" /></dd>
+        <dd><input name="submit" type="submit" value="马上搜索" class="submit ml20" /><input name="catid" type="hidden" value="{$catid}" /></dd>
+    </dl>
+</form>
+</div>
+<form name="addform" action="index.php?m=xdcms&c=content&f=edit_save" method="post" enctype="multipart/form-data">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="2" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=content&catid={$catid}">{$catname}</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=xdcms&c=content&f=add&catid={$catid}">发布内容</a></div><span>|</span><div class="title_nav_3"><a href="index.php?m=xdcms&c=transfer&catid={$catid}">数据转移</a></div></th>
+  </tr>
+  <tr>
+    <td width="15%" align="right">栏目名称：</td>
+    <td>{$catname}</td>
+  </tr>
+  <tr>
+    <td align="right">标题：</td>
+    <td><input type="text" name="title" class="txt" size="45" id="title" value="{$rs['title']}">
+      <select name="title_color" id="title_color" class="selects">
+        <option value="">颜色</option>
+        <option value="c1" class="bg1" {if $style[0]=='c1'}selected="selected"{/if}></option>
+        <option value="c2" class="bg2" {if $style[0]=='c2'}selected="selected"{/if}></option>
+        <option value="c3" class="bg3" {if $style[0]=='c3'}selected="selected"{/if}></option>
+        <option value="c4" class="bg4" {if $style[0]=='c4'}selected="selected"{/if}></option>
+        <option value="c5" class="bg5" {if $style[0]=='c5'}selected="selected"{/if}></option>
+        <option value="c6" class="bg6" {if $style[0]=='c6'}selected="selected"{/if}></option>
+        <option value="c7" class="bg7" {if $style[0]=='c7'}selected="selected"{/if}></option>
+        <option value="c8" class="bg8" {if $style[0]=='c8'}selected="selected"{/if}></option>
+        <option value="c9" class="bg9" {if $style[0]=='c9'}selected="selected"{/if}></option>
+      </select>
+      <input name="title_weight" type="checkbox" id="title_weight" value="tb" {if $style[1]=='tb'}checked="checked"{/if} />加粗</td>
+  </tr>
+  <tr>
+    <td align="right">是否推荐：</td>
+    <td><input name="commend" type="radio" id="commend" value="1" {if $rs['commend']==1}checked="checked"{/if}/> 是 <input name="commend" type="radio" id="commend" value="0" {if $rs['commend']==0}checked="checked"{/if} /> 否</td>
+  </tr>
+  <tr>
+    <td align="right">作者：</td>
+    <td><input type="text" name="username" class="txt" size="10" id="username" value="{$rs['username']}"></td>
+  </tr>
+  <tr>
+    <td align="right">缩略图：</td>
+    <td><input type="text" name="thumb" id="thumb" class="txt" size="25" value="{$rs['thumb']}"> <a href="#" onclick="javascript:ShowIframe(400,115,'上传缩略图！','system/function/upload.inc.php?filename=thumb')">上 传</a></td>
+  </tr>
+  <tr>
+    <td align="right">关键词：</td>
+    <td><input type="text" name="keywords" class="txt" size="40" id="keywords" value="{$rs['keywords']}"> <span>注：关键词之间请用英文逗号","间隔</span></td>
+  </tr>
+  <tr>
+    <td align="right">摘要：</td>
+    <td><textarea name="description" id="description" cols="50" rows="4" class="textarea">{$rs['description']}</textarea></td>
+  </tr>
+  {$fields}
+  <tr>
+    <td align="right">更新时间：</td>
+    <td><input type="text" name="updatetime" class="txt" size="20" id="updatetime" value="{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}"></td>
+  </tr>
+  <tr>
+    <td align="right">链接地址：</td>
+    <td><input type="text" name="url" class="txt" size="30" id="url" value="{$rs['url']}"> <span>* 不做外部链接请留空</span></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="hidden" name="inputtime" id="inputtime" value="{$rs['inputtime']}" /><input type="hidden" name="id" id="id" value="{$rs['id']}" /><input type="hidden" name="catid" id="catid" value="{$catid}" />
+      <input type="submit" name="submit" value="确认保存" class="submit" /></td>
+  </tr>
+</table>
+</form>
+{/nocache}
+<div class="xdcms_bottom"></div>
+</body>
+</html>

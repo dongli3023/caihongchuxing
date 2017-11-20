@@ -1,0 +1,57 @@
+{include file="admin/header.html"}
+{nocache}
+<h1 class="xdcms_search_title">编辑菜单</h1>
+<div class="line"></div>
+<form name="addform" action="index.php?m=xdcms&c=menu&f=edit_save" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=menu">管理菜单</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=xdcms&c=menu&f=cache">更新缓存</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <td align="right">上级菜单:</td>
+    <td>
+      <select name="parentid" id="parentid">
+        <option value="0">无(作为一级菜单)</option>
+        {foreach $menu as $v}
+        <option value="{$v['menuid']}" {if $v['menuid']==$rs['parentid']}selected="selected"{/if}>{$v['title']}</option>
+        {/foreach}
+      </select></td>
+  </tr>
+  <tr>
+    <td align="right">菜单名称:</td>
+    <td><input type="text" name="title" class="txt" size="20" id="title" value="{$rs['title']}"></td>
+  </tr>
+  <tr>
+    <td align="right">排序:</td>
+    <td><input type="text" name="sort" class="txt" size="4" id="sort" value="{$rs['sort']}"></td>
+  </tr>
+  <tr>
+    <td align="right">是否显示:</td>
+    <td>
+      <select name="is_show" id="is_show">
+        <option value="1" {if $rs.is_show==1}selected="selected"{/if}>是</option>
+        <option value="0" {if $rs.is_show==0}selected="selected"{/if}>否</option>
+      </select></td>
+  </tr>
+  <tr>
+    <td align="right">管理权限:</td>
+    <td>
+    {loop module="admin_group"}
+      <input name="groupid[]" type="checkbox" class="checkbox" id="groupid[]" value="{$r.groupid}" {if strstr($rs['groupid'],$r.groupid)!=''}checked="checked"{/if} />  {$r.name}
+    {/loop} <span>(注：如果都不选，则默认都具有管理权限)</span>
+    </td>
+  </tr>
+  <tr>
+    <td align="right">链接地址:</td>
+    <td><input type="text" name="url" class="txt" size="40" id="url" value="{$rs['url']}"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="submit" value="确认修改" class="submit" /><input name="menuid" type="hidden" value="{$rs['menuid']}" /></td>
+  </tr>
+</table>
+</form>
+{/nocache}
+<div class="xdcms_bottom"></div>
+</body>
+</html>

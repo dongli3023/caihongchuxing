@@ -1,0 +1,33 @@
+{include file="admin/header.html"}
+<script charset="utf-8" src="admin/editor/kindeditor.js"></script>
+<script charset="utf-8" src="admin/editor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="admin/editor/plugins/code/prettify.js"></script>
+<script charset="utf-8" src="admin/editor/editor.js"></script>
+<h1 class="xdcms_search_title">碎片管理</h1>
+<div class="line"></div>
+<form name="addform" action="index.php?m=xdcms&c=block&f=editsave" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=block">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=xdcms&c=block&f=add">添加碎片</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <td width="24%" align="right">名称：</td>
+    <td width="76%" colspan="3"><input type="text" name="title" class="txt" size="30" value="{$rs['title']}"></td>
+  </tr>
+  <tr>
+    <td align="right">标签：</td>
+    <td colspan="3"><input type="text" name="tag" class="txt" size="16" value="{$rs['tag']}"> 注：必须为字母、数字或下划线组成</td>
+  </tr>
+  <tr>
+    <td align="right">详细内容：</td>
+    <td colspan="3"><textarea name="content" id="editor" style="width:670px;height:300px;">{$rs['content']}</textarea></td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td><input type="submit" name="submit" value="确认修改" class="submit" /><input name="id" type="hidden" id="id" value="{$rs['id']}" /></td>
+  </tr>
+</table>
+</form>
+<div class="xdcms_bottom"></div>
+</body>
+</html>

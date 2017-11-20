@@ -1,0 +1,45 @@
+{include file="admin/header.html"}
+<h1 class="xdcms_search_title">URL规则管理</h1>
+<div class="line"></div>
+<form name="addform" action="index.php?m=xdcms&c=urlrule&f=addsave" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=urlrule">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=xdcms&c=urlrule&f=add">添加规则</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <td width="24%" align="right">分类：</td>
+    <td width="76%" colspan="3">
+      <select name="class" id="class">
+        <option value="list">列表页</option>
+        <option value="show">内容页</option>
+      </select></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right">是否静态：</td>
+    <td width="76%" colspan="3"><input type="radio" name="ishtml" id="ishtml" value="1" />是 <input name="ishtml" type="radio" id="ishtml" value="0" checked="checked" />否</td>
+  </tr>
+  <tr>
+    <td width="24%" align="right">是否固定：</td>
+    <td width="76%" colspan="3"><input type="radio" name="is_fixed" id="is_fixed" value="1" />是 <input name="is_fixed" type="radio" id="is_fixed" value="0" checked="checked" />否</td>
+  </tr>
+  <tr>
+    <td width="24%" align="right">示例：</td>
+    <td width="76%" colspan="3"><input type="text" name="urldemo" class="txt" size="40"></td>
+  </tr>
+  <tr>
+    <td align="right">URL规则：</td>
+    <td colspan="3"><input type="text" name="url" class="txt" size="50"></td>
+  </tr>
+  <tr>
+    <td align="right">可用参数：</td>
+    <td colspan="3">父类目录：[categorydir]、栏目目录：[catdir]、栏目ID：[catid]<br />语言版本ID：[languageid]、语言版本目录：[languagedir]<br />年：[year]、月：[month]、日：[day]、内容ID：[id]、分页：[page]</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="submit" value="确认保存" class="submit" /></td>
+  </tr>
+</table>
+</form>
+<div class="xdcms_bottom"></div>
+</body>
+</html>

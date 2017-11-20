@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{if $cat['seo_title']==''}{$cat['catname']}{else}{$cat['seo_title']}{/if}</title>
+<meta name="Keywords" content="{$cat['seo_key']}" />
+<meta name="Description" content="{$cat['seo_des']}" />
+<base href="{$config['siteurl']}">
+<link href="{$css_path}css.css" type=text/css rel=stylesheet>
+</head>
+
+<body>
+{include file="xdcms/header.html"}
+  <div id="banner1">{get_block tag='banner'}</div>
+  <div id="body3">
+	{include file="xdcms/left.html"}
+    <div id="body3_r">
+      <div class="body3_r1">
+        <p><a href="/">首页</a> > {get_guide($cat.catid)}</p>{$cat['catname']}</div>
+        <div class="body3_r2">
+        <!-- 文本 -->
+        {loop catid=$cat['catid'] more=1 pages='page' rows=3}
+        	<table width="100%" border="0" cellpadding="1" cellspacing="1" bgcolor="#CCCCCC" class="t10">
+              <tr>
+                <td width="36%" bgcolor="#FFFFFF"><b>招聘职位：</b>{$r.title}</td>
+                <td width="14%" align="center" bgcolor="#FFFFFF"><a href="index.php?m=form&c=lists&formid=8"><font color="#ff0000">应聘此职位</font></a></td>
+                <td width="50%" bgcolor="#FFFFFF"><b>发布时间：</b>{$r.inputtime|date_format:'%Y-%m-%d'}</td>
+              </tr>
+              <tr>
+                <td colspan="2" bgcolor="#FFFFFF"><b>招聘类别：</b>{$r.type}</td>
+                <td bgcolor="#FFFFFF"><b>经验要求：</b>{$r.experience}或以上</td>
+              </tr>
+              <tr>
+                <td colspan="2" bgcolor="#FFFFFF"><b>学历要求：</b>{$r.degree}或以上</td>
+                <td bgcolor="#FFFFFF"><b>性别要求：</b>{$r.sex}</td>
+              </tr>
+              <tr>
+                <td colspan="2" bgcolor="#FFFFFF"><b>招聘人数：</b>{$r.numbers}人</td>
+                <td bgcolor="#FFFFFF"><b>月薪待遇：</b>{$r.wage}</td>
+              </tr>
+              <tr>
+                <td colspan="3" bgcolor="#FFFFFF"><b>职位描述：</b>{$r.content}</td>
+              </tr>
+            </table>
+        {/loop}
+            <div id='page'>{$pages}</div>
+        <!-- 文本 END  -->
+        </div>
+    </div>
+    <div class="Cle"></div>
+  </div>
+{include file="xdcms/footer.html"}
+</div>
+</body>
+</html>

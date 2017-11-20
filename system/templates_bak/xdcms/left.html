@@ -1,0 +1,12 @@
+<!-- 二级导航 -->
+<div id="body3_l">
+    <div class="body3_l1">{$left_title}</div>
+    <div class="body3_l2">
+        <ul>
+        {foreach from=$left_menu item=value}
+            <li><div class="body3_l2_t">&nbsp;<a href="{$value['url']}">{$value['catname']}</a></div></li>
+        {/foreach}
+        </ul> 
+    </div>
+</div>
+<!-- 二级导航 END  -->

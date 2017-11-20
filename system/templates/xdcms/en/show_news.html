@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$rs.title}</title>
+<meta name="Keywords" content="{$rs.keywords}" />
+<meta name="Description" content="{$rs.description}" />
+<base href="{$config['siteurl']}">
+<link href="{$css_path}css.css" type=text/css rel=stylesheet>
+</head>
+
+<body>
+{include file="xdcms/en/header.html"}
+  <div id="banner1">{get_block tag='banner'}</div>
+  <div id="body3">
+	{include file="xdcms/left.html"}
+    <div id="body3_r">
+      <div class="body3_r1">
+        <p><a href="/index.php?l=2">Home</a> > {get_guide($cat.catid)}</p>{$cat['catname']}</div>
+        <div class="body3_r2">
+            <div class="body3_r3 {if $rs.style!=""}{$rs.style}{/if}">{$rs.title}</div>
+            <div class="body3_r4">发布时间：{$rs.inputtime|date_format:'%Y-%m-%d %H:%M:%S'} 点击浏览：<script src="index.php?m=content&c=index&f=hits&contentid={$rs.contentid}"></script>次</div>
+            <div class="body3_r5">
+            <!-- 文本   -->
+             {$rs.content}
+            <!-- 文本 END  -->
+            </div>
+            {if $keywords neq ""}
+            <div>热点标签：{$keywords}</div>
+            {/if}
+            <div>上一篇：{$previous}    下一篇：{$next}</div>
+        </div>
+    </div>
+    <div class="Cle"></div>
+  </div>
+{include file="xdcms/en/footer.html"}
+</div>
+</body>
+</html>

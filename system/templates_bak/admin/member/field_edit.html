@@ -1,0 +1,62 @@
+{include file="admin/header.html"}
+<h1 class="xdcms_search_title">字段管理</h1>
+<div class="line"></div>
+<form name="addform" action="index.php?m=member&c=admin&f=field_edit_save" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=member&c=admin&f=field">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=member&c=admin&f=field_add">添加字段</a></div><span>|</span><div class="title_nav_3"><a href="index.php?m=member&c=admin&f=update_field_cache">更新缓存</a></div></th>
+  </tr>
+  <tr>
+    <td align="right">文字名称:</td>
+    <td colspan="3"><input type="text" name="name" class="txt" size="30" id="name" value="{$rs['name']}"></td>
+  </tr>
+  <tr>
+    <td align="right">字段名称:</td>
+    <td colspan="3"><input type="text" name="field" class="txt" size="30" id="field" value="{$rs['field']}" disabled></td>
+  </tr>
+  <tr>
+    <td align="right">字段类型:</td>
+    <td colspan="3"><select name="formtype" id="formtype" class="formtype" onChange="fieldtype(this.value)">
+    {foreach from=$fields item=value key=k}
+      <option value="{$k}" {if $k==$rs['formtype']}selected="selected"{/if}>{$value}</option>
+    {/foreach}
+      </select> <div id="text_show" style="display:none;">宽：<input type="text" name="width" class="txt" size="4" id="width" value="{$rs['width']}"></div><div id="textarea_show" style="display:none;"> 高：<input type="text" name="height" class="txt" size="4" id="height" value="{$rs['height']}"></div></td>
+  </tr>
+  
+  <tr>
+    <td align="right">排序:</td>
+    <td colspan="3"><input type="text" name="sort" class="txt" size="10" id="sort" value="{$rs['sort']}"></td>
+  </tr>
+  <tr>
+    <td align="right">字段说明:</td>
+    <td colspan="3"><input type="text" name="explain" class="txt" size="30" id="explain" value="{$rs['explain']}"></td>
+  </tr>
+  <tr>
+    <td align="right">是否固定:</td>
+    <td colspan="3">
+      <input name="is_fixed" type="radio" id="is_fixed" value="1" {if $rs['is_fixed']==1}checked="checked"{/if} {if $rs['is_fixed']==1}disabled{/if}/>
+      是 
+      <input name="is_fixed" type="radio" id="is_fixed" value="0" {if $rs['is_fixed']==0}checked="checked"{/if} {if $rs['is_fixed']==1}disabled{/if}/>
+      否</td>
+  </tr>
+  <tr>
+    <td align="right">注册是否显示:</td>
+    <td colspan="3">
+      <input name="is_register" type="radio" id="is_register" value="1" {if $rs['is_register']==1}checked="checked"{/if}/>
+      是 
+      <input name="is_register" type="radio" id="is_register" value="0" {if $rs['is_register']==0}checked="checked"{/if}/>
+      否</td>
+  </tr>
+  <tr>
+    <td align="right">默认值:</td>
+    <td colspan="3"><font color="#ff0000">当选择为选项时,此即选项列表内容,列表值之间用英文逗号(,)分隔</font><br><textarea name="initial" id="initial" cols="45" rows="5">{$rs['initial']}</textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="hidden" name="fieldid" id="fieldid" value="{$rs['fieldid']}" /><input type="submit" name="submit" value="确认保存" class="submit" /></td>
+  </tr>
+</table>
+</form>
+<div class="xdcms_bottom"></div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{include file="xdcms/qq.html"}
+<div id="shell"> 
+	<!-- 页头 -->
+	<div id="header">
+    	<h1><a href="/" title="{$config['title']}"><img src="{$config['logourl']}" /></a></h1>
+        <div id="h_r"><script src="index.php?m=member&c=login&f=login_text"></script> | <a href="/index.php?l=2">English</a></div>
+	</div>
+	<!-- 页头 END -->
+
+	<!-- 导航 -->
+	<div id="nav1">
+  		<div id="nav_l">
+    		<div id="menu">
+                <ul id="nav">
+                    <li class="jquery_out"></li>
+                    <li class="mainlevel"><a href="/" >首　页</a></li>
+                    {foreach from=$menu key=key item=value}
+                    <li class="mainlevel" id="mainlevel_0{$key+1}"><a href="{$value['url']}" {if $value['is_target']==1}target="_blank"{/if}>{$value['catname']}</a>
+                    <ul id="sub_0{$key+1}">
+                    {loop sql="select * from {$pre}category where parentid={$value.catid}"}
+                    <li><a href="{$r['url']}" {if $r['is_target']==1}target="_blank"{/if}>{$r['catname']}</a></li>
+                    {/loop}
+                    </ul>
+                    </li>
+                    {/foreach}
+                    <div class="clear"></div>
+                </ul>
+			</div>
+		</div>
+        <div id="nav_r">
+            <form id="form1" name="form1" method="get" action="index.php">
+                <input type="text" name="key" id="key" class="key" />
+                <input type="image" src="{$image_path}search_submit.gif" class="search_submit" />
+                <input name="f" type="hidden" id="f" value="search" />
+                <input name="l" type="hidden" id="l" value="1" />
+                <input name="catid" type="hidden" id="catid" value="2" />
+            </form>
+        </div>
+		<div class="cle">&nbsp;</div>
+	</div>
+	<!-- 导航 END  -->

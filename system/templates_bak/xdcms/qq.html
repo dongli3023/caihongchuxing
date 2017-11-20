@@ -1,0 +1,18 @@
+<script type="text/javascript" src="{$js_path}qq.js"></script>
+<SCRIPT type="text/javascript" src="{$js_path}jquery-1.4.2.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="{$js_path}menu.js"></SCRIPT>
+<!-- QQ浮动客服  -->
+<div id="QQFloatDiv" style="position:absolute; right:0; top:100px;" >
+<span style="CURSOR:hand;  position:absolute; padding:9PX 0 0 15PX; " onClick="QQFloatDiv.style.display='none'"><img src="{$image_path}LITT.png" width="11" height="11" /></span>
+	<div class="Head"></div>
+    {loop module="qq"}
+	<div class="Body">{$r.title}&nbsp;<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$r.qq}&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:{$r.qq}:41" alt="www.91736.com" title="www.91736.com"></a>&nbsp;</div>
+	{/loop}
+    <div class="Foot"></div>    
+</div>
+<!-- QQ浮动客服 -->
+<script type="text/javascript">
+// 调用
+var ad = new FloatDiv('QQFloatDiv');
+ad.Init(ad);
+</script> 

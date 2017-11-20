@@ -1,0 +1,23 @@
+{include file="admin/header.html"}
+<h1 class="xdcms_search_title">内容页静态生成管理</h1>
+<div class="line"></div>
+<form name="addform" action="index.php?m=xdcms&c=creathtml&f=show_html" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=xdcms&c=categorytree&f=category_tree">更新栏目</a></div><span>|</span><div class="title_nav_2"><a href="index.php?m=xdcms&c=categorytree&f=show_tree">更新内容</a></div><span>|</span><div class="title_nav_3"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <td width="20%" align="right">选择栏目范围:<br>(可多选)</td>
+    <td style="padding-top:5px;padding-bottom:5px;"><select name="category[]" size="15" multiple="multiple" id="category[]" style="width:160px;">
+        {$categorylist}
+    </select></td>
+    </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td><input type="submit" name="submit" value="确认更新" class="submit" /></td>
+  </tr>
+</table>
+</form>
+<div class="xdcms_bottom"></div>
+</body>
+</html>
